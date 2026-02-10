@@ -1,50 +1,99 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dayoff-API</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body class="bg-gray-100 font-roboto">
-<div class="max-w-4xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
-  <div class="text-center">
-    <h2 class="text-3xl font-bold text-yellow-500">dayoff-API</h2>
-    <h1 class="text-lg font-semibold text-gray-600 mt-2">Api untuk mengecek hari libur dan cuti bersama</h1>
-  </div>
-  <div class="mt-6">
-    <h3 class="text-xl font-bold text-yellow-500">Format Response</h3>
-    <pre class="bg-gray-200 p-4 rounded-lg mt-2 text-sm">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EnigmaAPI - Kalender Nasional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 font-roboto"
+  >
+    <div
+      class="mx-4 my-6 max-w-4xl rounded-2xl border border-indigo-100 bg-white/90 p-5 shadow-2xl backdrop-blur sm:mx-6 sm:my-8 sm:p-6 lg:mx-auto lg:my-10 lg:p-8"
+    >
+      <div class="text-center">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-semibold tracking-wide"
+        >
+          <i class="far fa-calendar-alt"></i>
+          ENIGMAAPI
+        </div>
+        <h2
+          class="mt-3 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 sm:text-4xl"
+        >
+          Kalender Nasional
+        </h2>
+        <h1 class="mt-2 text-sm font-semibold text-indigo-700/80 sm:text-base">
+          API untuk cek hari libur nasional dan cuti bersama di Indonesia
+        </h1>
+      </div>
+      <div class="mt-6">
+        <h3 class="text-xl font-bold text-indigo-700">Format Response</h3>
+        <pre
+          class="mt-2 overflow-x-auto rounded-xl border border-indigo-100 bg-indigo-50 p-4 text-xs text-indigo-900 sm:text-sm"
+        >
 {
     "tanggal": "2023-01-1",
     "tanggal_display": "Minggu, 1 Januari 2023",
     "keterangan": "Tahun Baru 2023",
     "is_cuti": false
 }
-            </pre>
-  </div>
-  <div class="mt-6">
-    <h3 class="text-xl font-bold text-yellow-500">Cara Akses API</h3>
-    <ul class="list-disc list-inside mt-2 text-sm">
-      <li class="mb-2">Mendapatkan data hari libur tahun sekarang <small class="bg-gray-200 px-2 py-1 rounded">/api</small></li>
-      <li class="mb-2">Mendapatkan data hari libur pada tahun 2020 <small class="bg-gray-200 px-2 py-1 rounded">/api?year=2020</small></li>
-      <li class="mb-2">Mendapatkan data hari libur di bulan 5 pada tahun saat ini <small class="bg-gray-200 px-2 py-1 rounded">/api?month=5</small></li>
-      <li class="mb-2">Mendapatkan data hari libur di bulan 5 pada tahun 2023 <small class="bg-gray-200 px-2 py-1 rounded">/api?month=5&year=2023</small></li>
-    </ul>
-  </div>
-  <div class="mt-6">
-    <h3 class="text-xl font-bold text-yellow-500">Cara Kerja API ini?</h3>
-    <p class="mt-2 text-sm">
-      API ini mengambil data dari <a href="https://www.tanggalan.com/" class="text-blue-500 underline">tanggalan.com</a> dengan cara di scraping setiap 1 bulan sekali menggunakan github action.
+            </pre
+        >
+      </div>
+      <div class="mt-6">
+        <h3 class="text-xl font-bold text-indigo-700">Cara Akses API</h3>
+        <ul class="mt-2 list-inside list-disc text-xs text-indigo-900/80 sm:text-sm">
+          <li class="mb-2">
+            Data hari libur tahun sekarang
+            <small class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded"
+              >/api</small
+            >
+          </li>
+          <li class="mb-2">
+            Data hari libur tahun 2020
+            <small class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded"
+              >/api?year=2020</small
+            >
+          </li>
+          <li class="mb-2">
+            Data hari libur bulan 5 tahun saat ini
+            <small class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded"
+              >/api?month=5</small
+            >
+          </li>
+          <li class="mb-2">
+            Data hari libur bulan 5 tahun 2023
+            <small class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded"
+              >/api?month=5&year=2023</small
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="mt-6">
+        <h3 class="text-xl font-bold text-indigo-700">Cara Kerja API?</h3>
+        <p class="mt-2 text-sm text-indigo-900/80">
+          EnigmaAPI mengambil data dari
+          <a href="https://www.tanggalan.com/" class="text-blue-600 underline"
+            >tanggalan.com</a
+          >
+          dengan scraping terjadwal setiap 1 bulan sekali via GitHub Actions.
+        </p>
+      </div>
+      <!-- <div class="mt-6">
+    <h3 class="text-xl font-bold text-indigo-700">Kontribusi</h3>
+    <p class="mt-2 text-sm text-indigo-900/80">
+      Jika ingin berkontribusi, silakan kunjungi repository di <a href="https://github.com/gerinsp/dayoff-API" class="text-blue-600 underline">github.com/gerinsp/dayoff-API</a>
     </p>
-  </div>
-  <div class="mt-6">
-    <h3 class="text-xl font-bold text-yellow-500">Kontribusi</h3>
-    <p class="mt-2 text-sm">
-      Jika anda ingin berkontribusi di projek ini silahkan kunjungi repository saya di github <a href="https://github.com/gerinsp/dayoff-API" class="text-blue-500 underline">github.com/gerinsp/dayoff-API</a>
-    </p>
-  </div>
-</div>
-</body>
+  </div> -->
+    </div>
+  </body>
 </html>

@@ -28,17 +28,17 @@ app.get("/api", async (req, res) => {
     const files = await readdirAsync(path.join(__dirname, "data"));
     const filename = files.find((file) => file.includes(year));
 
-    const options = { 
-      weekday: 'long',   // nama hari
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric', 
-      timeZone: 'Asia/Jakarta'
+    const options = {
+      weekday: "long", // nama hari
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "Asia/Jakarta",
     };
 
     if (filename) {
       const rawData = await readFileAsync(
-        path.join(__dirname, "data", `${year}.json`)
+        path.join(__dirname, "data", `${year}.json`),
       );
       let data = JSON.parse(rawData);
       data.forEach((item) => {
@@ -51,32 +51,32 @@ app.get("/api", async (req, res) => {
       if (params.month) {
         console.log("month");
         const filterData = data
-        .filter((item) => {
-          const tanggal = new Date(item.tanggal);
-          const monthNum = tanggal.getMonth() + 1;
-          return monthNum == params.month;
-        })
-        .map(item =>{
-          const tanggal = new Date(item.tanggal);
-          return {
-            tanggal: item.tanggal,
-            tanggal_display: tanggal.toLocaleDateString('id-ID', options),
-            keterangan: item.keterangan,
-            is_cuti: item.is_cuti
-          }
-        });
+          .filter((item) => {
+            const tanggal = new Date(item.tanggal);
+            const monthNum = tanggal.getMonth() + 1;
+            return monthNum == params.month;
+          })
+          .map((item) => {
+            const tanggal = new Date(item.tanggal);
+            return {
+              tanggal: item.tanggal,
+              tanggal_display: tanggal.toLocaleDateString("id-ID", options),
+              keterangan: item.keterangan,
+              is_cuti: item.is_cuti,
+            };
+          });
         res.json(filterData);
       } else {
         console.log("data dari file json");
-        data = data.map(item => {
+        data = data.map((item) => {
           const tanggal = new Date(item.tanggal);
           return {
             tanggal: item.tanggal,
-            tanggal_display: tanggal.toLocaleDateString('id-ID', options),
+            tanggal_display: tanggal.toLocaleDateString("id-ID", options),
             keterangan: item.keterangan,
-            is_cuti: item.is_cuti
-          }
-        })
+            is_cuti: item.is_cuti,
+          };
+        });
         res.json(data);
       }
     } else {
@@ -96,15 +96,15 @@ app.get("/api/get-data", async (req, res) => {
   try {
     const data = await scraper(cheerio, request, fs, schedule); // Langsung dapatkan data JSON
     res.json({
-      status: 'OK',
-      message: 'Success melakukan scraping data',
-      data: data // Kirim data JSON langsung
+      status: "OK",
+      message: "Success melakukan scraping data",
+      data: data, // Kirim data JSON langsung
     });
   } catch (error) {
     console.error(error);
     res.status(500).json({
-      status: 'ERROR',
-      message: 'Terjadi kesalahan saat melakukan scraping data',
+      status: "ERROR",
+      message: "Terjadi kesalahan saat melakukan scraping data",
     });
   }
 });
@@ -113,6 +113,7 @@ app.get("/", (req, res) => {
   res.sendFile("index.html");
 });
 
-app.listen(3000, () => {
-  console.log("Website berjalan pada port 3000!");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Website berjalan pada port ${PORT}!`);
 });
