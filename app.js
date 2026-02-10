@@ -110,10 +110,14 @@ app.get("/api/get-data", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile("index.html");
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Website berjalan pada port ${PORT}!`);
-});
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  app.listen(PORT, () => {
+    console.log(`Website berjalan pada port ${PORT}!`);
+  });
+}
